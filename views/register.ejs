@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add User</title>
+	</head>
+	<body>
+		<h1>Add User</h1>
+		<form
+			action="/register"
+			method="POST"
+		>
+			<input
+				type="text"
+				name="name"
+				placeholder="Name"
+				required
+			/>
+			<input
+				type="email"
+				name="email"
+				placeholder="Email"
+				required
+			/>
+			<input
+				type="password"
+				name="password"
+				placeholder="Password"
+				required
+			/>
+			<input
+				type="text"
+				name="latitude"
+				id="latitude"
+				readonly
+				required
+				hidden
+			/>
+			<input
+				type="text"
+				name="longitude"
+				id="longitude"
+				readonly
+				required
+				hidden
+			/>
+			<p id="location"></p>
+			<button type="submit">Add User</button>
+		</form>
+		<script>
+			getLocation();
+
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition, showError);
+				} else {
+					document.getElementById("location").innerHTML =
+						"Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				document.getElementById("longitude").value = longitude;
+				document.getElementById("latitude").value = latitude;
+			}
+
+			function showError(error) {
+				switch (error.code) {
+					case error.PERMISSION_DENIED:
+						document.getElementById("location").innerHTML =
+							"User denied the request for Geolocation.";
+						break;
+					case error.POSITION_UNAVAILABLE:
+						document.getElementById("location").innerHTML =
+							"Location information is unavailable.";
+						break;
+					case error.TIMEOUT:
+						document.getElementById("location").innerHTML =
+							"The request to get user location timed out.";
+						break;
+					case error.UNKNOWN_ERROR:
+						document.getElementById("location").innerHTML =
+							"An unknown error occurred.";
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

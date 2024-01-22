@@ -2,31 +2,52 @@
 <html>
 	<head>
 		<title>Add User</title>
+		<link
+			rel="stylesheet"
+			href="register-login.css"
+			type="text/css"
+		/>
 	</head>
 	<body>
-		<h1>Add User</h1>
 		<form
 			action="/register"
 			method="POST"
+			class="container"
 		>
-			<input
-				type="text"
-				name="name"
-				placeholder="Name"
-				required
-			/>
-			<input
-				type="email"
-				name="email"
-				placeholder="Email"
-				required
-			/>
-			<input
-				type="password"
-				name="password"
-				placeholder="Password"
-				required
-			/>
+			<div class="header">
+				<h1>Register</h1>
+				<p>Alreday have an account? <a href="./login">Login here</a></p>
+			</div>
+			<div class="form-inputs">
+				<div>
+					<label for="name">Full name</label>
+					<input
+						type="text"
+						name="name"
+						placeholder="Full name"
+						required
+					/>
+				</div>
+				<div>
+					<label for="email">Email Address</label>
+					<input
+						type="email"
+						name="email"
+						placeholder="Email"
+						required
+					/>
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input
+						type="password"
+						name="password"
+						placeholder="Password"
+						required
+					/>
+				</div>
+			</div>
+
 			<input
 				type="text"
 				name="latitude"
@@ -44,7 +65,7 @@
 				hidden
 			/>
 			<p id="location"></p>
-			<button type="submit">Add User</button>
+			<button type="submit">Register</button>
 		</form>
 		<script>
 			getLocation();

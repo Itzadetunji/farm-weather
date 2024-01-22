@@ -2,26 +2,76 @@
 <html>
 	<head>
 		<title>Login User</title>
+		<link
+			rel="stylesheet"
+			href="register-login.css"
+			type="text/css"
+		/>
 	</head>
 	<body>
-		<h1>Login User</h1>
 		<form
-			action="/login"
-			method="POST"
+			class="container"
+			onsubmit="login(event)"
 		>
-			<input
-				type="email"
-				name="email"
-				placeholder="Email"
-				required
-			/>
-			<input
-				type="password"
-				name="password"
-				placeholder="Password"
-				required
-			/>
+			<div class="header">
+				<h1>Log in</h1>
+				<p>Don't have an account? <a href="./register">Register here</a></p>
+			</div>
+			<div class="form-inputs">
+				<div>
+					<label for="email">Email Address</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Email"
+						required
+					/>
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Password"
+						required
+					/>
+				</div>
+			</div>
 			<button type="submit">Login</button>
 		</form>
 	</body>
+	<script>
+		function login(event) {
+			event.preventDefault();
+
+			const email = document.getElementById("email").value;
+			const password = document.getElementById("password").value;
+
+			fetch("/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					email: email,
+					password: password,
+				}),
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error(`HTTP error! Status: ${response.status}`);
+					}
+					return response.json();
+				})
+				.then((data) => {
+					console.log("User data:", data);
+					localStorage.setItem("user", JSON.stringify(data));
+				})
+				.catch((error) => {
+					console.error("Error during login:", error);
+				});
+		}
+	</script>
 </html>

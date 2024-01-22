@@ -7,6 +7,7 @@ const app = express();
 mongoose.connect("mongodb://127.0.0.1:27017/weather");
 
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -33,9 +34,7 @@ app.post("/register", async (req, res) => {
 		console.log(req.body);
 		newUser.save();
 
-		return res.status(200).json({
-			message: "You have registered",
-		});
+		res.render("register-successful");
 	} catch (error) {
 		throw new Error("Failed to create the new user");
 	}
@@ -54,7 +53,10 @@ app.post("/login", async (req, res) => {
 
 		if (user)
 			return res.status(200).json({
-				message: "Logged in successfully",
+				email: user.email,
+				name: user.name,
+				latitude: user.latitude,
+				longitude: user.longitude,
 			});
 		return res.status(403).json({
 			message: "Unable to find user",

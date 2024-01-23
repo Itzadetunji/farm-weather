@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather dashboard</title>
+    <link rel="stylesheet" href="stylepro.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Weather Dashboard</h1>
+    </div>
+    <div class="header-two">
+      <h2>Good Morning</h2>
+      <i class="fa-solid fa-cloud-sun"></i>
+      <br />
+      <h3>08:42 AM</h3>
+    </div>
+    <div class="container">
+      <div class="weather-input">
+        <h3>Enter a city</h3>
+        <input type="text" placeholder="E.g, Abuja, Ibadan, Lagos" />
+        <button class="search-btn">Search</button>
+        <div class="division"></div>
+        <button class="location-btn" onclick="useLocation()">
+          Use Current Location
+        </button>
+        <br />
+        <div class="sunrise-container">
+          <h2>Sunrise & Sunset</h2>
+          <div class="ss-container">
+            <h3>Abuja</h3>
+            <div class="sunrise">
+              <i class="fa-solid fa-sun"></i>
+              <h4>4:40 AM</h4>
+            </div>
+            <div class="sunset">
+              <i class="fa-solid fa-moon"></i>
+              <h4>6:50 PM</h4>
+            </div>
+          </div>
+
+          <div class="ss-container">
+            <h3>Jos</h3>
+            <div class="sunrise">
+              <i class="fa-solid fa-sun"></i>
+              <h4>5:00 AM</h4>
+            </div>
+            <div class="sunset">
+              <i class="fa-solid fa-moon"></i>
+              <h4>7:00 PM</h4>
+            </div>
+          </div>
+
+          <div class="ss-container">
+            <h3>Lagos</h3>
+            <div class="sunrise">
+              <i class="fa-solid fa-sun"></i>
+              <h4>4:30 AM</h4>
+            </div>
+            <div class="sunset">
+              <i class="fa-solid fa-moon"></i>
+              <h4>6:40 PM</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weather-data">
+        <div class="current-weather">
+          <div class="details">
+            <h2 id="date0"></h2>
+            <h4 id="temp0">Temperature:</h4>
+            <h4 id="wind0">Wind Speed:</h4>
+            <h4 id="visibility0">Humidity:</h4>
+          </div>
+          <div class="icon">
+            <i class="fa-solid fa-cloud-rain"></i>
+          </div>
+        </div>
+        <div class="daily-forecast">
+          <h2>5-day Forecast</h2>
+          <ul class="weather-labels">
+            <li class="label">
+              <h3 id="date0"></h3>
+              <i class="fa-solid fa-sun"></i>
+              <h4 id="temp0">Temperature:</h4>
+              <h4 id="wind0">Wind Speed:</h4>
+              <h4 id="visibility0">Humidity:</h4>
+            </li>
+            <li class="label">
+              <h3 id="date1"></h3>
+              <i class="fa-solid fa-sun"></i>
+              <h4 id="temp1">Temperature:</h4>
+              <h4 id="wind1">Wind Speed:</h4>
+              <h4 id="visibility1">Humidity:</h4>
+            </li>
+            <li class="label">
+              <h3 id="date2"></h3>
+              <i class="fa-solid fa-sun"></i>
+              <h4 id="temp2">Temperature:</h4>
+              <h4 id="wind2">Wind Speed:</h4>
+              <h4 id="visibility2">Humidity:</h4>
+            </li>
+            <li class="label">
+              <h3 id="date3"></h3>
+              <i class="fa-solid fa-sun"></i>
+              <h4 id="temp3">Temperature:</h4>
+              <h4 id="wind3">Wind Speed:</h4>
+              <h4 id="visibility3">Humidity:</h4>
+            </li>
+            <li class="label">
+              <h3 id="date4"></h3>
+              <i class="fa-solid fa-sun"></i>
+              <h4 id="temp4">Temperature:</h4>
+              <h4 id="wind4">Wind Speed:</h4>
+              <h4 id="visibility4">Humidity:</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          document.getElementById("location").innerHTML =
+            "User denied the request for Geolocation.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          document.getElementById("location").innerHTML =
+            "Location information is unavailable.";
+          break;
+        case error.TIMEOUT:
+          document.getElementById("location").innerHTML =
+            "The request to get user location timed out.";
+          break;
+        case error.UNKNOWN_ERROR:
+          document.getElementById("location").innerHTML =
+            "An unknown error occurred.";
+          break;
+      }
+    }
+
+    function useLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          fetch("/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              longitude: longitude,
+              latitude: latitude,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              document.getElementById("temperature").innerText =
+                data.data.main.temp;
+              document.getElementById("weather-description").innerText =
+                data.data.weather[0].description;
+              document.getElementById("wind-speed").innerText =
+                data.data.wind.speed;
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+      } else {
+        document.getElementById("location").innerHTML =
+          "Geolocation is not supported by this browser.";
+      }
+    }
+  </script>
+</html>

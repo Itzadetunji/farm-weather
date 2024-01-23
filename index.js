@@ -3,13 +3,15 @@ const mongoose = require("mongoose");
 const { User } = require("./user.schema");
 const app = express();
 
-mongoose.connect("mongodb+srv://SOLD:XUn0GZ81rl98NLF5@cluster0.vrb1nxs.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect(
+  "mongodb+srv://SOLD:XUn0GZ81rl98NLF5@cluster0.vrb1nxs.mongodb.net/?retryWrites=true&w=majority"
+);
 
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
@@ -70,7 +72,7 @@ app.post("/", async (req, res) => {
   try {
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=5d13922d646c92e4b5896d35e4c0e80d`;
     const response = await fetch(url);
-    const data = await response.json();
+    let data = await response.json();
     res.status(200).json({ data: data });
   } catch (error) {
     console.log(error);

@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Oxygen+Mono&display=swap");
+
+body {
+	max-width: 900px;
+	margin: 0 auto;
+	background-color: #cdecb7;
+	color: #004d40;
+	font-family: "Oxygen Mono", monospace;
+}
+
+main {
+	margin-top: 30px;
+}
+
+hr {
+	max-width: 800px;
+	margin: 48px;
+	border: 1px solid #757575;
+}
+
+.search-form {
+	margin: 20px 25px;
+	height: 40px;
+	padding: 0px 10px;
+	width: 300px;
+	border-radius: 5px;
+	border: 2px solid #1b5e20;
+	font-size: 12px;
+}
+
+button {
+	border: 2px solid transparent;
+	border-radius: 8px;
+	background: #111;
+	color: white;
+	padding: 6px 0px;
+	width: 100px;
+	cursor: pointer;
+	background: #1b5e20;
+}
+
+button:hover {
+	background: white;
+	color: black;
+	border: 2px solid #1b5e20;
+}
+
+.measurements {
+	position: relative;
+	left: 25px;
+	top: -10px;
+}
+
+.current-weather {
+	margin-top: 50px;
+}
+
+.city-title {
+	max-width: 300px;
+	font-size: 32px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.temp-title {
+	/* color: #37718e; */
+	font-size: 140px;
+	font-family: "Inter", sans-serif;
+	text-align: center;
+}
+
+.todays-info {
+	margin: 15px 0;
+}
+
+.side-info {
+	position: relative;
+	left: 72px;
+}
+
+p,
+ul {
+	font-family: "Oxygen Mono", monospace;
+	font-size: 15px;
+}
+
+li {
+	list-style: none;
+}
+
+.week-forecast {
+	text-align: center;
+	font-family: "Inter", sans-serif;
+}
+
+.weather {
+	margin-top: 2px;
+	margin-bottom: 6px;
+	font-size: 14px;
+}
+
+h2 {
+	font-size: 48px;
+}
+
+h3 {
+	font-size: 22px;
+	margin-bottom: -18px;
+}
+
+span {
+	font-size: 20px;
+}
+
+footer {
+	position: relative;
+	bottom: -100px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #0a95c9;
+}
+
+a:hover {
+	color: #007bff;
+}
+
+.footer-content {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}

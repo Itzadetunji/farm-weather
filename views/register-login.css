@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Oxygen+Mono&display=swap");
 
 body {
 	height: 100vh;
@@ -6,7 +6,13 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: "Open Sans", sans-serif;
+	font-family: "Oxygen Mono", monospace;
+	background: #cdecb7;
+	color: #004d40;
+}
+
+a:visited {
+	color: #004d40;
 }
 
 .container {
@@ -15,7 +21,6 @@ body {
 	width: 100%;
 	max-width: 564px;
 	padding: 42px;
-	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .header {
@@ -42,14 +47,10 @@ p {
 	gap: 8px;
 }
 
-label {
-	color: #666666;
-}
-
 input {
-	border: 1px solid rgba(102, 102, 102, 0.35);
+	border: 1px solid #004d40;
 	border-radius: 12px;
-	padding: 20px 8px;
+	padding: 20px 10px;
 }
 
 button {
@@ -61,11 +62,11 @@ button {
 	width: 100%;
 	margin-top: 16px;
 	cursor: pointer;
+	background: #1b5e20;
 }
 
 button:hover {
 	background: white;
 	color: black;
-	border: 2px solid black;
-	animation-duration: 200ms;
+	border: 2px solid #1b5e20;
 }

@@ -61,16 +61,21 @@
 			})
 				.then((response) => {
 					if (!response.ok) {
-						throw new Error(`HTTP error! Status: ${response.status}`);
+						throw new Error(`${response.status}`);
 					}
 					return response.json();
 				})
 				.then((data) => {
-					console.log("User data:", data);
+					console.log(data);
 					localStorage.setItem("user", JSON.stringify(data));
+					window.location.href = "/";
 				})
 				.catch((error) => {
-					console.error("Error during login:", error);
+					if (error.toString().includes("403")) {
+						alert(`Email and password do not match`);
+					} else {
+						alert("An erorr has occurred. Please try again later.");
+					}
 				});
 		}
 	</script>

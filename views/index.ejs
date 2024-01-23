@@ -19,8 +19,8 @@
     <div class="container">
       <div class="weather-input">
         <h3>Enter a city</h3>
-        <input type="text" placeholder="E.g, Abuja, Ibadan, Lagos" />
-        <button class="search-btn">Search</button>
+        <input type="text" id="city" placeholder="E.g, Abuja, Ibadan, Lagos" />
+        <button class="search-btn" onclick="searchByCity()">Search</button>
         <div class="division"></div>
         <button class="location-btn" onclick="useLocation()">
           Use Current Location
@@ -123,6 +123,29 @@
   </body>
 
   <script>
+	function searchByCity() {
+		const city = document.getElementById("city").value
+		fetch("/city", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              city: city,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              document.getElementById("temperature").innerText =
+                data.data.main.temp;
+              document.getElementById("weather-description").innerText =
+                data.data.weather[0].description;
+              document.getElementById("wind-speed").innerText =
+                data.data.wind.speed;
+            })
+            .catch((error) => console.error("Error:", error));
+	}
     function showError(error) {
       switch (error.code) {
         case error.PERMISSION_DENIED:

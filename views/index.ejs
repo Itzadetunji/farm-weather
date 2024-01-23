@@ -281,39 +281,39 @@
 			const populateOtherDays = (content) => {
 				// Days Abbreviation
 				document.getElementById("first-day-name").innerText =
-					getDayAbbreviation(content.list[8].dt_txt.split(" ")[0]);
+					getDayAbbreviation(content.list[0].dt_txt.split(" ")[0]);
 				document.getElementById("second-day-name").innerText =
-					getDayAbbreviation(content.list[16].dt_txt.split(" ")[0]);
+					getDayAbbreviation(content.list[8].dt_txt.split(" ")[0]);
 				document.getElementById("third-day-name").innerText =
-					getDayAbbreviation(content.list[23].dt_txt.split(" ")[0]);
+					getDayAbbreviation(content.list[16].dt_txt.split(" ")[0]);
 				document.getElementById("fourth-day-name").innerText =
-					getDayAbbreviation(content.list[30].dt_txt.split(" ")[0]);
+					getDayAbbreviation(content.list[24].dt_txt.split(" ")[0]);
 				document.getElementById("fifth-day-name").innerText =
-					getDayAbbreviation(content.list[37].dt_txt.split(" ")[0]);
+					getDayAbbreviation(content.list[32].dt_txt.split(" ")[0]);
 
 				//Weather Type
 				document.getElementById("first-day-weather").innerText =
-					content.list[8].weather[0].main;
+					content.list[0].weather[0].main;
 				document.getElementById("second-day-weather").innerText =
-					content.list[16].weather[0].main;
+					content.list[8].weather[0].main;
 				document.getElementById("third-day-weather").innerText =
-					content.list[23].weather[0].main;
+					content.list[16].weather[0].main;
 				document.getElementById("fourth-day-weather").innerText =
-					content.list[30].weather[0].main;
+					content.list[24].weather[0].main;
 				document.getElementById("fifth-day-weather").innerText =
-					content.list[37].weather[0].main;
+					content.list[32].weather[0].main;
 
 				//Temperature
 				document.getElementById("first-day-temp").innerText =
-					content.list[8].main.temp + "°";
+					content.list[0].main.temp + "°";
 				document.getElementById("second-day-temp").innerText =
 					content.list[16].main.temp + "°";
 				document.getElementById("third-day-temp").innerText =
-					content.list[23].main.temp + "°";
+					content.list[16].main.temp + "°";
 				document.getElementById("fourth-day-temp").innerText =
-					content.list[30].main.temp + "°";
+					content.list[24].main.temp + "°";
 				document.getElementById("fifth-day-temp").innerText =
-					content.list[37].main.temp + "°";
+					content.list[32].main.temp + "°";
 
 				//Weather Icons
 				document.getElementById(
@@ -324,13 +324,13 @@
 				).src = `https://openweathermap.org/img/wn/${content.list[16].weather[0].icon}@2x.png`;
 				document.getElementById(
 					"third-day-icon"
-				).src = `https://openweathermap.org/img/wn/${content.list[23].weather[0].icon}@2x.png`;
+				).src = `https://openweathermap.org/img/wn/${content.list[16].weather[0].icon}@2x.png`;
 				document.getElementById(
 					"fourth-day-icon"
-				).src = `https://openweathermap.org/img/wn/${content.list[30].weather[0].icon}@2x.png`;
+				).src = `https://openweathermap.org/img/wn/${content.list[24].weather[0].icon}@2x.png`;
 				document.getElementById(
 					"fifth-day-icon"
-				).src = `https://openweathermap.org/img/wn/${content.list[37].weather[0].icon}@2x.png`;
+				).src = `https://openweathermap.org/img/wn/${content.list[32].weather[0].icon}@2x.png`;
 			};
 
 			const getDayAbbreviation = (date) => {

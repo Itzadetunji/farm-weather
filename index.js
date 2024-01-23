@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 const { User } = require("./user.schema");
 const app = express();
 
-// mongoose.connect(
-// 	"mongodb+srv://SOLD:XUn0GZ81rl98NLF5@cluster0.vrb1nxs.mongodb.net/?retryWrites=true&w=majority"
-// );
-
-mongoose.connect("mongodb://127.0.0.1:27017/weather");
+mongoose.connect(
+	"mongodb+srv://SOLD:XUn0GZ81rl98NLF5@cluster0.vrb1nxs.mongodb.net/?retryWrites=true&w=majority"
+);
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"));

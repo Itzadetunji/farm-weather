@@ -25,6 +25,9 @@
 	<body>
 		<main>
 			<section class="container">
+				<h3 style="font-weight: bold; text-align: center; margin: 10px 0px">
+					AOBA farm weather 👨🏽‍🌾👩🏽‍🌾🚜
+				</h3>
 				<div class="row">
 					<form
 						class="col"
@@ -45,6 +48,8 @@
 					></h1>
 				</div>
 			</section>
+
+			<h3 id="username"></h3>
 
 			<section class="current-weather">
 				<div class="container">
@@ -187,6 +192,9 @@
 				!JSON.parse(localStorage.getItem("user")).latitude
 			) {
 				window.location.href = "/login";
+			} else {
+				document.getElementById("username").innerText =
+					"Hi 👋🏽 " + JSON.parse(localStorage.getItem("user")).name;
 			}
 
 			const fetchByCity = async (event) => {

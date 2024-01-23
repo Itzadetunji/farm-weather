@@ -4,7 +4,7 @@ const { User } = require("./user.schema");
 const app = express();
 
 mongoose.connect(
-	"mongodb+srv://SOLD:XUn0GZ81rl98NLF5@cluster0.vrb1nxs.mongodb.net/?retryWrites=true&w=majority"
+	"mongodb+srv://itzadetunji:adetunjimay29@quotescluster.nxy3zov.mongodb.net/farm-weather?retryWrites=true&w=majority"
 );
 
 app.set("view engine", "ejs");
@@ -13,7 +13,7 @@ app.use(express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
@@ -35,15 +35,15 @@ app.post("/register", async (req, res) => {
 				message:
 					"This email is already registered to an account, kindly Login.",
 			});
+		} else {
+			const newUser = new User(req.body);
+
+			await newUser.save();
+
+			return res.status(200).json({
+				message: "User registration successful",
+			});
 		}
-
-		const newUser = new User(req.body);
-
-		await newUser.save();
-
-		return res.status(200).json({
-			message: "User registration successful",
-		});
 	} catch (error) {
 		console.error(error);
 		return res.status(500).json({

@@ -78,3 +78,15 @@ app.post("/", async (req, res) => {
     res.status(500).json({ error: error });
   }
 });
+app.post("/city", async (req, res) => {
+  const { city } = req.body;
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5d13922d646c92e4b5896d35e4c0e80d`;
+    const response = await fetch(url);
+    let data = await response.json();
+    res.status(200).json({ data: data });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+  }
+});

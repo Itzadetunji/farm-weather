@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    background: gray;
+}
+.header{
+    font-size: 1.20rem;
+    background: rgb(82, 36, 141);
+    color: rgb(238, 127, 145);
+    text-align: center;
+    padding: 3px 0;
+    margin-top: 0;
+}
+.header h1{
+    text-align: center;
+}
+.header-two{
+    display: flex;
+    background:rgb(82, 36, 141);
+}
+.header-two i{
+    font-size: 30px;
+    color:yellow;
+    
+}
+.header-two h2{
+    font-size: 25px;
+    text-align: left;
+    text-justify: auto;
+    color: azure;
+    font-style: italic;
+}
+.header-two h3{
+    font-size: 15px;
+    color: azure;
+    display:contents;
+    font-style: italic;
+}
+.container{
+    display: flex;
+    gap: 40px;
+    padding: 35px;
+    color: #fff;
+}
+.weather-input{
+    width:560px;
+}
+.weather-input h3{
+    color:black;
+    font-size: 1.2rem;
+    
+}
+.weather-input input{
+    width:100%;
+    height:45px;
+    outline: none;
+    padding: 0 16px;
+    font-size: 1rem;
+    border: 1px solid#ccc;
+    border-radius: 4px;
+    margin: 10px o 20px 0;
+}
+.weather-input .division{
+    height:1px;
+    width: 100%;
+    margin: 25px 0;
+    background: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weather-input .division::before{
+    content: "or";
+    color:black;
+    font-size: 1rem;
+    padding: 0 16px;
+    background: white;
+    margin-top:-4px;
+}
+.weather-input button{
+    width:100%;
+    padding: 10px 0;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color:#fff;
+    border-radius: 5px;
+    background: rgb(84, 37, 146);
+    font-size: 1rem;
+}
+.weather-input .location-btn{
+    background: rgb(43, 42, 42);
+    font-size: 1rem;
+}
+.weather-input .location-btn:hover{
+    background: skyblue;
+    color: black;
+}
+.weather-data{
+    width: auto;
+    margin-top: -10px;
+}
+.current-weather{
+    color:#fff;
+    padding: 20px 70px;
+    background: rgb(84, 37, 146);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset;
+}
+.current-weather h2{
+    font-size: 1.2rem;
+}
+.weather-data h4{
+    margin-top: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.current-weather .icon img{
+    max-width: 125px;
+    margin-top: -15px;
+}
+.current-weather .icon h4{
+    margin-top: -10px;
+    text-transform: capitalize;
+}
+.daily-forecast h2{
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color:rgb(29, 2, 6)
+}
+.weather-labels{
+    display:flex;
+    gap: 20px;
+}
+.weather-labels .label{
+    list-style: none;
+    color: aliceblue;
+    padding: 18px 15px;
+    border-radius: 5px;
+    background: black;
+    cursor: pointer;
+    transition: transform 1s, background-color 1s;
+}
+.weather-labels .label:hover{
+    background:rgb(201, 84, 103);
+}
+.icon i{
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    color:skyblue;
+    border: 1px;
+    border-color: black;
+}
+.label i{
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    color:yellow;
+    margin-top: 2px;
+}
+.container .search-btn:hover{
+    background: skyblue;
+    color: black;
+}
+.icon h4{
+    padding:12px;
+}
+.sunrise-container{
+    background: rgb(31, 31, 29);
+    margin-top: 20px;
+    border-radius: 5px;
+    height: 270px;
+    transform: rotate3d(-0.5);
+}
+.sunrise-container h2{
+    text-align: center;
+    font-size: 20px;
+    color: yellowgreen;
+}
+
+.ss-container{
+    display: inline;
+    text-align: left;
+}
+.ss-container h3{
+    color: rgb(240, 241, 238)
+}
+.sunrise i{
+    font-size: 20px;
+    color: yellow;
+    
+}
+.sunrise h4{
+    text-align: left;
+    font-style: italic;
+    margin-bottom: 7px;
+}
+.sunset h4{
+    text-align: justify;
+    font-style: italic;
+    margin-bottom: 7px;
+}
+.sunrise{
+    display: flex;
+
+}
+.sunset{
+    display: flex;
+}
+.sunset i{
+    font-size: 20px;
+    color: darkcyan;
+}

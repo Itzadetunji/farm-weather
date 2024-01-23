@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { User } = require("./user.schema");
+const { User } = require("./user.schema.cjs");
 const app = express();
 
 mongoose.connect(
